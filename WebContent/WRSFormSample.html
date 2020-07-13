@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample WRS form</title>
+</head>
+<body>
+	<form name="WRS_form"> 
+	<!-- creating 2 input boxes -->
+		<label for="fname">First name :</label>
+		<input id="fname" name="fname" type="text" size=25 required><br>
+		
+		<label for="lname">Last name : </label>
+		<input id="lname" name="lname" type="text" size=25 required><br>
+		
+		<!-- creating a radio button -->
+		<label for="content_team_ind">Do you need to engage the content team?</label><br>
+		<input type="radio" id="yes" name="content_team_ind" value="yes" onClick="myRadioButtonCheck()" >
+		<label for="yes">Yes</label><br>
+		
+		<input type="radio" id="no" name="content_team_ind" value="no" onClick="myRadioButtonCheck()">
+		<label for="no">No</label><br>
+		
+		<div id=optionalDiv>
+			
+			<!-- script to hide the div when the page loads up -->
+			<script>									
+				document.getElementById("optionalDiv").style.display ="none";
+			</script>
+			
+			<!-- creating a drop down to allow the content team to choose from a list of statuses -->
+			<label for="Status">Content team --> Please mark the progress using the status drop down </label>
+			<input list="Statuses" name="Status" id="Status">
+			<datalist id="Statuses">
+				<option value="Choose a status">
+				<option value="In progress">
+				<option value="Creative content development complete">
+			</datalist>	
+		</div>	
+		<!-- creating submit button to submit data -->
+		<input type="submit" value="Submit Data"><br>
+	</form>
+	
+	
+	<!-- script to validate if the radio button is checked -->
+	<script>
+			function myRadioButtonCheck(){		
+				//if condition to not display the optionalDiv
+				let divVisibility = document.getElementById("optionalDiv");		
+				if (divVisibility.style.display === "block"){
+					divVisibility.style.display = "none";
+				}else{
+					divVisibility.style.display = "block";
+				}
+				
+				
+				//if the radio button option "Yes" is chosen, then the above optionalDiv should show up
+				let radioButton = document.getElementById("yes");
+				let radioButtonChoice2 = document.getElementById("no"); 
+				
+				if(radioButton.checked === true){
+					divVisibility.style.display = "block";		
+					}else if(radioButtonChoice2.checked === true){
+						divVisibility.style.display = "none";
+					};
+		}
+	</script>
+	
+</body>
+</html>
